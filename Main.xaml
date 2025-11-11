@@ -103,10 +103,12 @@
             <av:Size x:Key="ShapeSize">110,70</av:Size>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <Sequence DisplayName="Parent Sequence" sap:VirtualizedContainerService.HintSize="450,519" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Parent Sequence" sap:VirtualizedContainerService.HintSize="450,1305" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:Int32" Name="subtraction" />
             <Variable x:TypeArguments="x:Int32" Name="sum" />
+            <Variable x:TypeArguments="x:Int32" Name="Num1" />
+            <Variable x:TypeArguments="x:Int32" Name="Num2" />
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -114,22 +116,34 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="416,118" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Wlcome from local repo&quot;]" />
+          <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="416,275" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Enter num1" Title="Enter num1" TopMost="False">
+            <ui:InputDialog.Result>
+              <OutArgument x:TypeArguments="x:Int32">[Num1]</OutArgument>
+            </ui:InputDialog.Result>
+          </ui:InputDialog>
+          <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="416,275" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Enter num2" Title="Enter num2" TopMost="False">
+            <ui:InputDialog.Result>
+              <OutArgument x:TypeArguments="x:Int32">[Num2]</OutArgument>
+            </ui:InputDialog.Result>
+          </ui:InputDialog>
           <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[sum]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:Int32">[1+2]</InArgument>
+              <InArgument x:TypeArguments="x:Int32">[Num1 + Num2]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="416,118" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Sum = &quot; + sum.ToString]" />
+          <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_3">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[subtraction]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:Int32">[3-1]</InArgument>
+              <InArgument x:TypeArguments="x:Int32">[Num1 - Num2]</InArgument>
             </Assign.Value>
           </Assign>
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="416,109" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;SUB = &quot; + subtraction.ToString]" />
         </Sequence>
       </FlowStep>
     </Flowchart>
